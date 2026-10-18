@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF Q&A</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>PDF Q&amp;A</h1>
+    <p id="status" class="status" role="status">Checking models…</p>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>Document</h2>
+
+      <label id="dropzone" class="dropzone" for="file-input">
+        <span class="dropzone-title">Choose a PDF</span>
+        <span class="dropzone-hint">or drop it here (typed PDFs only)</span>
+        <input id="file-input" type="file" accept="application/pdf,.pdf" hidden>
+      </label>
+
+      <p id="upload-msg" class="note" aria-live="polite"></p>
+
+      <dl id="doc-info" class="doc-info" hidden>
+        <dt>File</dt><dd id="doc-name"></dd>
+        <dt>Pages with text</dt><dd id="doc-pages"></dd>
+        <dt>Search</dt><dd id="doc-search"></dd>
+      </dl>
+
+      <a class="link" href="/api/log" download>Download Q&amp;A log (CSV)</a>
+    </aside>
+
+    <section class="chat">
+      <ol id="messages" class="messages" aria-live="polite">
+        <li class="empty" id="empty">Upload a PDF, then ask a question about it.</li>
+      </ol>
+
+      <div class="composer">
+        <textarea id="question" rows="2" dir="auto"
+                  placeholder="Ask a question about the PDF" disabled></textarea>
+        <button id="send" type="button" disabled>Ask</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
